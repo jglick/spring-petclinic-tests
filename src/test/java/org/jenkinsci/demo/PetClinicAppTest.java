@@ -10,8 +10,6 @@ import java.io.IOException;
 
 public class PetClinicAppTest {
 
-    public static final String APP_URL = "APP_URL";
-
     @Test
     public void testApp() throws IOException {        
         final WebClient webClient = new WebClient(BrowserVersion.FIREFOX_31);
@@ -20,10 +18,6 @@ public class PetClinicAppTest {
     }
 
     private String getAppUrl() {
-        String appUrl = System.getProperty(APP_URL);
-        if (appUrl == null) {
-            Assert.fail(String.format("System property '%s' is not set in the environment.", APP_URL));
-        }
-        return appUrl;
+        return "http://petclinic:8080";
     }
 }
