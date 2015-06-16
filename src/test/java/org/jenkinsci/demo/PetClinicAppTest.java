@@ -1,20 +1,19 @@
 package org.jenkinsci.demo;
 
-import com.gargoylesoftware.htmlunit.BrowserVersion;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class PetClinicAppTest {
 
     @Test
-    public void testApp() throws IOException {        
-        final WebClient webClient = new WebClient(BrowserVersion.FIREFOX_31);
-        final HtmlPage page = webClient.getPage(getAppUrl());
-        Assert.assertEquals("PetClinic :: a Spring Framework demonstration", page.getTitleText());
+    public void testApp() throws IOException {
+        WebDriver webDriver = new FirefoxDriver();
+        webDriver.get(getAppUrl());
+        Assert.assertEquals("PetClinic :: a Spring Framework demonstration", webDriver.getTitle());
     }
 
     private String getAppUrl() {
